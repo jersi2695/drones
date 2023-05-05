@@ -1,6 +1,5 @@
-package com.mulasoft.drones.model;
+package com.mulasoft.drones.models;
 
-import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -9,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.validation.constraints.Pattern;
 
 
 @Entity
@@ -16,6 +16,7 @@ import javax.persistence.Lob;
 public class Medication {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "MEDICATION_ID")
     private Long id;
 
     @Column(nullable = false)
@@ -31,6 +32,4 @@ public class Medication {
 
     @Lob
     private byte[] image;
-
-    // constructors, getters, setters
 }
