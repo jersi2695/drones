@@ -1,7 +1,10 @@
 package com.mulasoft.drones.models;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,12 +16,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
-import java.util.ArrayList;
+import javax.validation.constraints.Max;
 import java.util.List;
 
 
 @Entity
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Drone {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,6 +40,7 @@ public class Drone {
     @Column(nullable = false)
     private Double weightLimit;
 
+    @Max(100)
     private Double batteryCapacity;
 
     @Enumerated(EnumType.STRING)
@@ -45,6 +52,6 @@ public class Drone {
           joinColumns={ @JoinColumn(name="DRONE_ID", referencedColumnName="DRONE_ID") },
           inverseJoinColumns={ @JoinColumn(name="MEDICATION_ID", referencedColumnName="MEDICATION_ID", unique=true) }
     )
-    private List<Medication> medications = new ArrayList<>();
+    private List<Medication> medications;
 
 }

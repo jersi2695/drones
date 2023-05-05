@@ -54,7 +54,7 @@ public class DroneService
             return ResponseDto.<Boolean>builder().data( false ).message( "Medications weight exceeds drone capacity" ).build();
         }
 
-        drone.getMedications().addAll( medications );
+        drone.setMedications( medications );
         drone.setState( DroneState.LOADED );
         droneRepository.save( drone );
         return ResponseDto.<Boolean>builder().data( true ).build();

@@ -1,6 +1,9 @@
 package com.mulasoft.drones.models;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +16,9 @@ import javax.validation.constraints.Pattern;
 
 @Entity
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Medication {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
